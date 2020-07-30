@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>向上渐隐直播弹幕</title>
+    <style>
+        html,body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+
+        }
+        body {
+            background: #454544; 
+            /* url('flower.jpg') no-repeat border-box; */
+            position: relative;
+        }
+        .chat-wrap {
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            overflow-y: auto;
+            bottom: 0;
+            -webkit-mask-image:linear-gradient(transparent, blue);
+        }
+        .mask {
+            position: absolute;
+            width: 100%;
+            height: 100px; 
+            background: #fff;
+        }
+        .chat {
+            background-color: gray;
+            color: #fff;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-wrap">
+        <!-- <div class="mask"></div> -->
+        <div class="chat">1234666</div>
+        <div class="chat">1234666</div>
+        <div class="chat">1234666</div>
+        <div class="chat">1234666</div>
+        <div class="chat">1234666</div>
+        <div class="chat">1234666</div>
+        <div class="chat">1234666</div>
+        <div class="chat">1234666</div>
+        <div class="chat">1234666</div>
+        <div class="chat">1234666</div>
+    </div>
+</body>
+</html>
