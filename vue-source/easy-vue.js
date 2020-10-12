@@ -8,25 +8,25 @@ class Vue {
 
     observe (data) {
         Object.keys(data).forEach(key => {
-            const val = data[key]
-            const dep = New Dep()
+            let val = data[key]
+            const dep = new Dep()
             Object.defineProperty(data, key, {
                 get () {
                     if (Dep.target) {
                         dep.addSub(Dep.target) // 添加订阅者
                     }
                     return val
-                }
+                },
                 set (newVal) {
                     val = newVal
-                    Dep.notify(newVal)
+                    dep.notify(newVal)
                 }
             })
         })
     }
 
     compile (node) {
-        [].forEach.call(node, child => {
+        [].forEach.call(node.childNodes, child => {
             if (!child.firstElementChild && /\{\{(.*)\}\}/.test(child.innerHTML)) {
                 let key = RegExp.$1.trim()
                 child.innerHTML = child.innerHTML.replace(new RegExp('\\{\\{\\s*'+ key +'\\s*\\}\\}', 'gm'),this.opt.data[key])
