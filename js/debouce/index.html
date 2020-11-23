@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content" style="height:150px;line-height:150px;text-align:center; color: #fff;background-color:#ccc;font-size:80px;"></div>
+    <script>
+        let num = 1;
+        let content = document.getElementById('content');
+
+        function count(e) {
+            content.innerHTML = num++;
+            console.log(e)
+            // content.innerHTML = n;
+        };
+
+        function debouce(fn, delay, immediate) {
+            let timer = null;
+            return function() {
+                // console.log(arguments);
+                const context = this;
+                const args = [...arguments];
+                if(timer) clearTimeout(timer);
+                if(immediate) {
+                    timer = setTimeout(() => {
+                        timer = null
+                    }, delay);
+                    fn.apply(context, args);
+                } else {
+                    timer = setTimeout(() => {
+                        fn.apply(context, args);
+                    }, delay);
+                }
+            }
+        }
+
+        function throttle(fn, delay) {
+            let timer = null;
+            return function() {
+                const context = this;
+                const args = arguments;
+                if(!timer) {
+                    timer = setTimeout(() => {
+                        fn.apply(context, args);
+                        timer = null;
+                    }, delay);
+                }
+            }
+        }
+
+        content.onmousemove = throttle(count, 1000)
+    </script>
+</body>
+</html>
